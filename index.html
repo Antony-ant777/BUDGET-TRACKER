@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: aliceblue;
+    }
+    .head{
+        background-color: blue;
+        color: antiquewhite;
+        text-align: center;
+        padding: 0.2%;
+    }
+    .container{
+        background-color: rgb(230, 188, 137);
+        padding: 3%;
+
+    }
+    .section1{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:7%;
+    }
+    .one{
+        margin-top: 1%;
+    }
+    .two{
+        margin-top:2%;
+    }
+    button{
+        background-color: blue;
+        color: bisque;
+        border-radius: 5px;
+
+    }
+    button:active{
+        background-color: bisque;
+        color: blue;
+    }
+    .section2{
+        padding-top: 2%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    table{
+           border-collapse: collapse;
+           border: 2px solid cadetblue;
+          
+    }
+    th{
+        background-color: blue;
+        color: bisque;
+    }
+    td{
+        background-color: rgb(240, 207, 157);
+       
+    }
+    .table{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: cadetblue ;
+        padding-top: 5%;
+    }
+
+
+</style>
+<body>
+    <div class="tot">
+    <div class="head">
+      <h1>Add a new transaction:</h1>
+    </div>
+    <div class="container">
+        <div class="section1">
+         <div class="one">
+         <label>Type:</label>
+         <select id="type" class="dept">
+            <option >Choose one...</option>
+            <option  >INCOME</option>
+            <option >EXPANSE</option>
+            
+        </select>
+
+        </div>
+        <div class="two">
+            <label>Name:</label>
+            <input id="name" type="text"><br>
+            <label>Amount:</label>
+            <input id="amt" type="number">
+        </div>
+        </div>
+        <div class="section2">
+            <button onclick="addTransaction()" id="add-btn">Add to transactions</button>
+        </div>
+    </div>
+   <div class="table">
+    <table border="2">
+        <tbody>
+        <tr>
+            <th>Type</th>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Options</th>
+        </tr>
+        </tbody>
+        <tbody id="table">
+        </tbody>
+        
+        
+       
+    </table>
+</div>
+
+</div>
+
+
+<script>
+     function addTransaction() {
+            const type = document.getElementById('type').value;
+            const name = document.getElementById('name').value;
+            const amt = document.getElementById('amt').value;
+            
+            if (type === "" || name === "" || amt === "") {
+                alert("All fields are neccessary");
+                return false;
+            }
+
+            const table = document.getElementById('table');
+            const row = table.insertRow();
+            const typeCell = row.insertCell(0);
+            const nameCell = row.insertCell(1);
+            const amtCell = row.insertCell(2);
+            const optionsCell = row.insertCell(3);
+
+            typeCell.innerHTML = type;
+            nameCell.innerHTML = name;
+            amtCell.innerHTML = amt;
+            optionsCell.innerHTML = '<button id="del" onclick="del()">Delete</button>';
+
+            document.getElementById('type').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('amt').value = '';
+        }
+
+        function del(){
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+        }
+
+</script>
+
+
+    
+</body>
+</html>
